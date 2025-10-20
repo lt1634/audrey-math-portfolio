@@ -84,29 +84,33 @@ audrey-math-portfolio/
 
 ## 🚀 Deployment
 
-### GitHub Pages
+### Vercel (Recommended) ⭐
 
-1. **Fork or Clone** this repository
-2. **Enable GitHub Pages** in repository settings
-3. **Select Source**: Choose "Deploy from a branch"
-4. **Select Branch**: Choose "main" branch
-5. **Save** and wait for deployment
+**🌍 Live Demo**: [audrey-math-portfolio.vercel.app](https://audrey-math-portfolio.vercel.app)
 
-### Netlify
+1. **Import** your GitHub repository to Vercel
+2. **Framework Preset**: Other (Static Site)
+3. **Build Command**: (leave empty)
+4. **Output Directory**: (leave empty)
+5. **Deploy** automatically on every push
+
+**Advantages**:
+- ⚡ Global CDN for faster loading
+- 🔄 Automatic deployments from GitHub
+- 📊 Built-in analytics and monitoring
+- 🆓 Generous free tier
+
+### GitHub Pages (Deprecated)
+
+~~GitHub Pages deployment has been disabled in favor of Vercel for better performance.~~
+
+### Netlify (Alternative)
 
 1. **Connect** your GitHub repository to Netlify
 2. **Build Settings**:
    - Build command: (leave empty)
    - Publish directory: `/` (root)
 3. **Deploy** automatically on every push
-
-### Vercel
-
-1. **Import** your GitHub repository
-2. **Framework Preset**: Other
-3. **Build Command**: (leave empty)
-4. **Output Directory**: (leave empty)
-5. **Deploy**
 
 ## 🔧 Local Development
 
