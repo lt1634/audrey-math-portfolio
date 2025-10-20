@@ -36,15 +36,10 @@ function updateLanguageContent(lang) {
             // Update content
             const content = element.getAttribute(`data-${lang}`);
             if (content) {
-                // Check if element contains HTML tags (like span.highlight)
-                if (element.querySelector('.highlight')) {
-                    // For elements with HTML tags, preserve the structure
-                    const highlightText = element.querySelector('.highlight').textContent;
-                    if (lang === 'zh') {
-                        element.innerHTML = `${content} <span class="highlight">安蕎的數學</span>`;
-                    } else {
-                        element.innerHTML = `${content} <span class="highlight">Audrey Math</span>`;
-                    }
+                // Check if element contains title-text span
+                if (element.querySelector('.title-text')) {
+                    // For title elements, update the inner span
+                    element.querySelector('.title-text').textContent = content;
                 } else {
                     // For plain text elements, use textContent
                     element.textContent = content;
