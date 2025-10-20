@@ -3287,8 +3287,8 @@ def main():
     print("For 3-5 year old children in Hong Kong educational style")
     print("With EDB integration and Agent mode support\n")
 
-    # Directly use the provided API key
-    gemini_key = "AIzaSyCMyL9VphKmBXmWIrOolr2XBpguIwDay_E"
+    # Use environment variable for API key
+    gemini_key = os.getenv('GEMINI_API_KEY')
 
     try:
         # Create main output directory
@@ -3451,7 +3451,7 @@ def debug_pdf_errors():
     try:
         generator = AudreyMathCourseGenerator(
             output_dir="debug_test",
-            gemini_api_key="AIzaSyCMyL9VphKmBXmWIrOolr2XBpguIwDay_E"
+            gemini_api_key=os.getenv('GEMINI_API_KEY')
         )
         
         # Test visual worksheet generation

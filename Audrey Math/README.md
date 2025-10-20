@@ -28,7 +28,9 @@ pip install -r requirements.txt
 
 2. (Optional) Set up Gemini API key for AI content generation:
    - Get API key from [Google AI Studio](https://makersuite.google.com/app/apikey)
-   - The script will prompt for the key when running
+   - Create a `.env` file: `cp env.example .env`
+   - Add your API key to `.env`: `GEMINI_API_KEY=your_actual_api_key_here`
+   - **IMPORTANT**: Never commit `.env` file to git!
 
 ## Usage
 

@@ -14,6 +14,15 @@ build/
 .env.development.local
 .env.test.local
 .env.production.local
+*.env
+api_keys.txt
+secrets.txt
+config.ini
+config.json
+
+# Google API Keys
+google_api_key.txt
+gemini_api_key.txt
 
 # IDE and editor files
 .vscode/
