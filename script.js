@@ -36,7 +36,19 @@ function updateLanguageContent(lang) {
             // Update content
             const content = element.getAttribute(`data-${lang}`);
             if (content) {
-                element.textContent = content;
+                // Check if element contains HTML tags (like span.highlight)
+                if (element.querySelector('.highlight')) {
+                    // For elements with HTML tags, preserve the structure
+                    const highlightText = element.querySelector('.highlight').textContent;
+                    if (lang === 'zh') {
+                        element.innerHTML = `${content} <span class="highlight">安蕎的數學</span>`;
+                    } else {
+                        element.innerHTML = `${content} <span class="highlight">Audrey Math</span>`;
+                    }
+                } else {
+                    // For plain text elements, use textContent
+                    element.textContent = content;
+                }
             }
             
             // Add fade in effect
