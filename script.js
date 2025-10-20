@@ -47,8 +47,8 @@ function updateLanguageContent(lang) {
             // Remove transition classes after animation
             setTimeout(() => {
                 element.classList.remove('language-transition', 'fade-in');
-            }, 300);
-        }, 150);
+            }, 200);
+        }, 100);
     });
     
     // Update form placeholders
@@ -265,8 +265,8 @@ function showNotification(message, type = 'info') {
 // Scroll animations
 function initScrollAnimations() {
     const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
+        threshold: 0.05,
+        rootMargin: '0px 0px -20px 0px'
     };
     
     const observer = new IntersectionObserver((entries) => {
@@ -388,9 +388,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // Add loading animation to page
     document.body.style.opacity = '0';
     setTimeout(() => {
-        document.body.style.transition = 'opacity 0.5s ease';
+        document.body.style.transition = 'opacity 0.3s ease';
         document.body.style.opacity = '1';
-    }, 100);
+    }, 50);
 });
 
 // Handle window resize

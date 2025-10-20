@@ -820,7 +820,7 @@ section {
 }
 
 .language-transition {
-    transition: opacity 0.3s ease, transform 0.3s ease;
+    transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
 .language-transition.fade-out {
@@ -929,7 +929,7 @@ section {
 .fade-in {
     opacity: 0;
     transform: translateY(30px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
+    transition: opacity 0.4s ease, transform 0.4s ease;
 }
 
 .fade-in.visible {
