@@ -86,7 +86,7 @@ audrey-math-portfolio/
 
 ### Vercel (Recommended) ⭐
 
-**🌍 Live Demo**: [audrey-math-portfolio.vercel.app](https://audrey-math-portfolio.vercel.app)
+**🌍 Live Demo**: [audrey-math-portfolio-usn6.vercel.app](https://audrey-math-portfolio-usn6-26g879u9x-lt1634s-projects.vercel.app/)
 
 1. **Import** your GitHub repository to Vercel
 2. **Framework Preset**: Other (Static Site)

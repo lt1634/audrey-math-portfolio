@@ -105,9 +105,11 @@ vercel --prod
 
 ### **部署 URL 格式**
 ```
-生產環境: https://audrey-math-portfolio.vercel.app
+生產環境: https://audrey-math-portfolio-usn6-26g879u9x-lt1634s-projects.vercel.app/
 預覽環境: https://audrey-math-portfolio-git-[branch].vercel.app
 ```
+
+**🌍 實際部署 URL**: [audrey-math-portfolio-usn6.vercel.app](https://audrey-math-portfolio-usn6-26g879u9x-lt1634s-projects.vercel.app/)
 
 ## 🎯 **部署後檢查**
 
