@@ -10,6 +10,30 @@ A modern, bilingual educational platform for mathematics learning with interacti
 - **Modern UI**: Clean, professional design with organic shapes
 - **Interactive Elements**: Smooth animations and hover effects
 - **6-Stage Learning System**: Comprehensive math learning progression
+- **API Quota Management**: Built-in usage limits and cost control
+
+## 🔒 API Quota Management
+
+### **配額設定**
+- **每日請求限制**: 50 次
+- **每小時請求限制**: 10 次  
+- **每日字符限制**: 25,000 字符
+- **每小時字符限制**: 2,500 字符
+- **請求間隔**: 3 秒
+
+### **監控使用量**
+```bash
+# 檢查配額狀態
+python3 quota_checker.py
+
+# 重置每日配額
+python3 quota_checker.py reset
+```
+
+### **費用控制**
+- **預估月費用**: $0.38
+- **預估年費用**: $4.56
+- **自動配額管理**: 防止超限使用
 
 ## 🚀 Live Demo
 
