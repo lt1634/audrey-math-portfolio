@@ -1,0 +1,71 @@
+AUDREY MATH COURSE GENERATOR - SUMMARY REPORT
+==================================================
+
+Generated on: 2025-10-19 08:44:01
+Total stages: 6
+
+GENERATED FILES:
+--------------------
+
+GOALS:
+  - audrey_math_output/goals/stage_1_goals.md
+  - audrey_math_output/goals/stage_2_goals.md
+  - audrey_math_output/goals/stage_3_goals.md
+  - audrey_math_output/goals/stage_4_goals.md
+  - audrey_math_output/goals/stage_5_goals.md
+  - audrey_math_output/goals/stage_6_goals.md
+
+CONTENT:
+  - audrey_math_output/content/stage_1_content.txt
+  - audrey_math_output/content/stage_2_content.txt
+  - audrey_math_output/content/stage_3_content.txt
+  - audrey_math_output/content/stage_4_content.txt
+  - audrey_math_output/content/stage_5_content.txt
+  - audrey_math_output/content/stage_6_content.txt
+
+WORKSHEETS:
+  - audrey_math_output/worksheets/stage_1_worksheet.pdf
+  - audrey_math_output/worksheets/stage_2_worksheet.pdf
+  - audrey_math_output/worksheets/stage_3_worksheet.pdf
+  - audrey_math_output/worksheets/stage_4_worksheet.pdf
+  - audrey_math_output/worksheets/stage_5_worksheet.pdf
+  - audrey_math_output/worksheets/stage_6_worksheet.pdf
+
+VISUAL_WORKSHEETS:
+  - audrey_math_output/worksheets/visual_worksheet_stage_1.pdf (Kid-friendly FPDF/ReportLab worksheets)
+  - audrey_math_output/worksheets/visual_worksheet_stage_2.pdf (Kid-friendly FPDF/ReportLab worksheets)
+  - audrey_math_output/worksheets/visual_worksheet_stage_3.pdf (Kid-friendly FPDF/ReportLab worksheets)
+  - audrey_math_output/worksheets/visual_worksheet_stage_4.pdf (Kid-friendly FPDF/ReportLab worksheets)
+  - audrey_math_output/worksheets/visual_worksheet_stage_5.pdf (Kid-friendly FPDF/ReportLab worksheets)
+  - audrey_math_output/worksheets/visual_worksheet_stage_6.pdf (Kid-friendly FPDF/ReportLab worksheets)
+
+ACTIVITIES:
+  - audrey_math_output/activities/stage_1_activities.xlsx
+  - audrey_math_output/activities/stage_2_activities.xlsx
+  - audrey_math_output/activities/stage_3_activities.xlsx
+  - audrey_math_output/activities/stage_4_activities.xlsx
+  - audrey_math_output/activities/stage_5_activities.xlsx
+  - audrey_math_output/activities/stage_6_activities.xlsx
+
+COMBINED:
+  - audrey_math_output/goals_and_content.md (Complete 6-stage curriculum)
+
+COMBINED_EXCEL:
+  - audrey_math_output/all_stages_activities.xlsx (All 6 stages in one Excel file)
+
+COURSE OVERVIEW:
+--------------------
+Stage 1: Number Recognition and Counting (1-10)
+Stage 2: Shapes and Colors
+Stage 3: Patterns and Classification
+Stage 4: Basic Addition/Subtraction with Objects
+Stage 5: Measurement and Comparison
+Stage 6: Space and Problem Solving
+
+USAGE INSTRUCTIONS:
+--------------------
+1. Review the goals files for learning objectives
+2. Use content files for lesson planning
+3. Print worksheet PDFs for student activities
+4. Use Excel files for activity tracking and assessment
+5. Adapt materials based on individual child needs

@@ -1,0 +1,30 @@
+{
+  "name": "audrey-math-platform",
+  "version": "1.0.0",
+  "description": "A modern, bilingual educational platform for mathematics learning",
+  "main": "index.html",
+  "scripts": {
+    "start": "python -m http.server 8000",
+    "serve": "npx serve .",
+    "dev": "npx live-server ."
+  },
+  "keywords": [
+    "education",
+    "mathematics",
+    "bilingual",
+    "portfolio",
+    "responsive",
+    "modern"
+  ],
+  "author": "Audrey Math",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/audrey-math-portfolio.git"
+  },
+  "homepage": "https://your-username.github.io/audrey-math-portfolio",
+  "devDependencies": {
+    "live-server": "^1.2.2",
+    "serve": "^14.2.1"
+  }
+}
