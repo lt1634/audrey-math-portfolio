@@ -202,6 +202,13 @@
     color: #60a5fa;
 }
 
+/* Dark Mode Logo */
+[data-theme="dark"] .logo-text {
+    color: var(--text-primary);
+}
+
+/* Dark Mode Card Backgrounds */
+
 /* Container and Stages Display */
 .container {
     max-width: 1200px;
@@ -460,6 +467,56 @@ body {
 
 .theme-toggle-checkbox:checked + .theme-toggle-label .moon-icon {
     opacity: 1;
+}
+
+/* Logo Styles */
+.nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-img {
+    height: 40px;
+    width: auto;
+    transition: transform 0.3s ease;
+}
+
+.logo-img:hover {
+    transform: scale(1.05);
+}
+
+.logo-text {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    transition: color 0.3s ease;
+}
+
+/* Responsive Logo */
+@media (max-width: 768px) {
+    .logo-img {
+        height: 35px;
+    }
+    
+    .logo-text {
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-logo {
+        gap: 8px;
+    }
+    
+    .logo-img {
+        height: 30px;
+    }
+    
+    .logo-text {
+        font-size: 1.1rem;
+    }
 }
 
 /* Navigation */
