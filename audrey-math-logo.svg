@@ -1,10 +1,10 @@
 <svg width="200" height="80" viewBox="0 0 200 80" xmlns="http://www.w3.org/2000/svg">
-  <!-- Green Triangle -->
-  <polygon points="20,60 20,20 40,60" fill="#96DDCB"/>
+  <!-- Light Teal Triangle -->
+  <polygon points="15,55 15,25 35,55" fill="#96DDCB"/>
   
   <!-- Text: Audrey -->
-  <text x="50" y="35" font-family="serif" font-size="24" font-weight="bold" fill="#2C2C2C">Audrey</text>
+  <text x="45" y="35" font-family="Arial, sans-serif" font-size="22" font-weight="600" fill="#2C2C2C">Audrey</text>
   
   <!-- Text: Math -->
-  <text x="50" y="55" font-family="serif" font-size="24" font-weight="bold" fill="#2C2C2C">Math</text>
+  <text x="45" y="55" font-family="Arial, sans-serif" font-size="22" font-weight="600" fill="#2C2C2C">Math</text>
 </svg>
