@@ -156,8 +156,8 @@ navLinks.forEach(link => {
 
 // Hero Button Interactions
 contactBtn.addEventListener('click', () => {
-    const contactSection = document.querySelector('#contact');
-    const offsetTop = contactSection.offsetTop - 80;
+    const learningStagesSection = document.querySelector('#learning-stages');
+    const offsetTop = learningStagesSection.offsetTop - 80;
     window.scrollTo({
         top: offsetTop,
         behavior: 'smooth'
