@@ -1,26 +1,81 @@
 /* Modern Portfolio Design with Organic Shapes */
 :root {
-    /* Morandi Color Theme */
-    --primary-color: #8B7355; /* 莫蘭迪棕色，代表數學邏輯 */
-    --secondary-color: #A68B5B; /* 莫蘭迪米色，代表成長 */
-    --bg-color: #F5F1EB; /* 莫蘭迪米白背景，清晰 */
-    --text-color: #5A4A3A; /* 莫蘭迪深棕文字，易讀 */
-    --accent-color: #B8956A; /* 莫蘭迪金棕強調，適合數字/按鈕 */
+    /* Math Education Color Theme - Light Mode */
+    --primary-color: #2563EB; /* 專業藍色，代表數學邏輯 */
+    --secondary-color: #059669; /* 成長綠色，代表學習進步 */
+    --accent-color: #DC2626; /* 強調紅色，突出重要內容 */
+    --warning-color: #D97706; /* 警告橙色，用於按鈕和互動 */
+    --neutral-color: #6B7280; /* 中性灰色，用於次要文字 */
     
-    /* Modern Color Palette */
-    --bg-primary: var(--bg-color);
-    --bg-secondary: #ffffff;
-    --bg-tertiary: #f1f5f9;
-    --bg-quaternary: #e2e8f0;
-    --text-primary: var(--text-color);
-    --text-secondary: #6B5B4B;
-    --text-accent: var(--primary-color);
-    --card-bg: #ffffff;
-    --navbar-bg: rgba(245, 241, 235, 0.95);
+    /* Background Colors */
+    --bg-primary: #FFFFFF; /* 純白主背景 */
+    --bg-secondary: #F8FAFC; /* 淺灰次要背景 */
+    --bg-tertiary: #F1F5F9; /* 更淺的灰背景 */
+    --bg-accent: #EFF6FF; /* 淺藍背景，用於突出區域 */
+    
+    /* Text Colors */
+    --text-primary: #1E293B; /* 深灰主文字 */
+    --text-secondary: #475569; /* 中灰次要文字 */
+    --text-accent: var(--primary-color); /* 藍色強調文字 */
+    --text-muted: #64748B; /* 淺灰靜音文字 */
+    
+    /* Card and Component Colors */
+    --card-bg: #FFFFFF;
+    --card-border: #E2E8F0;
+    --card-shadow: rgba(0, 0, 0, 0.05);
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%);
+    --gradient-secondary: linear-gradient(135deg, #059669 0%, #047857 100%);
+    --gradient-accent: linear-gradient(135deg, #DC2626 0%, #B91C1C 100%);
+    --gradient-warning: linear-gradient(135deg, #D97706 0%, #B45309 100%);
+    --gradient-bg: linear-gradient(135deg, #F8FAFC 0%, #E2E8F0 100%);
+    
+    /* Legacy variables for compatibility */
+    --bg-color: var(--bg-primary);
+    --text-color: var(--text-primary);
+    --navbar-bg: rgba(255, 255, 255, 0.95);
     --shadow: rgba(0, 0, 0, 0.08);
-    --gradient-primary: linear-gradient(135deg, var(--primary-color) 0%, #6B5B4B 100%);
-    --gradient-secondary: linear-gradient(135deg, var(--secondary-color) 0%, #8B7355 100%);
-    --gradient-accent: linear-gradient(135deg, var(--accent-color) 0%, #A68B5B 100%);
+}
+
+/* Dark Theme Variables */
+[data-theme="dark"] {
+    /* Dark Theme - Modern Dark Colors */
+    --primary-color: #60A5FA; /* 亮藍色，在暗色背景下突出 */
+    --secondary-color: #34D399; /* 亮綠色，代表成長 */
+    --accent-color: #F87171; /* 亮紅色，突出重要內容 */
+    --warning-color: #FBBF24; /* 亮黃色，用於按鈕和互動 */
+    --neutral-color: #9CA3AF; /* 中性灰色 */
+    
+    /* Dark Background Colors */
+    --bg-primary: #0F172A; /* 深藍黑主背景 */
+    --bg-secondary: #1E293B; /* 深藍灰次要背景 */
+    --bg-tertiary: #334155; /* 中藍灰背景 */
+    --bg-accent: #1E3A8A; /* 深藍背景，用於突出區域 */
+    
+    /* Dark Text Colors */
+    --text-primary: #F1F5F9; /* 亮白主文字 */
+    --text-secondary: #CBD5E1; /* 淺灰次要文字 */
+    --text-accent: var(--primary-color); /* 亮藍強調文字 */
+    --text-muted: #94A3B8; /* 中灰靜音文字 */
+    
+    /* Dark Card Colors */
+    --card-bg: #1E293B;
+    --card-border: #475569;
+    --card-shadow: rgba(0, 0, 0, 0.3);
+    
+    /* Dark Gradients */
+    --gradient-primary: linear-gradient(135deg, #60A5FA 0%, #3B82F6 100%);
+    --gradient-secondary: linear-gradient(135deg, #34D399 0%, #10B981 100%);
+    --gradient-accent: linear-gradient(135deg, #F87171 0%, #EF4444 100%);
+    --gradient-warning: linear-gradient(135deg, #FBBF24 0%, #F59E0B 100%);
+    --gradient-bg: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+    
+    /* Legacy variables */
+    --bg-color: var(--bg-primary);
+    --text-color: var(--text-primary);
+    --navbar-bg: rgba(15, 23, 42, 0.95);
+    --shadow: rgba(0, 0, 0, 0.3);
 }
 
 /* Dark Theme Section Backgrounds */
@@ -235,8 +290,8 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
-    color: var(--text-color);
-    background: linear-gradient(to bottom, var(--bg-color), #F8F4F0);
+    color: var(--text-primary);
+    background: var(--gradient-bg);
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
@@ -485,7 +540,7 @@ body {
     min-height: 100vh;
     display: flex;
     align-items: center;
-    background: linear-gradient(135deg, #E8D5C4 0%, #D4C5B9 100%);
+    background: var(--bg-primary);
     color: var(--text-primary);
     padding-top: 80px;
     position: relative;
@@ -596,13 +651,14 @@ body {
 }
 
 .btn-primary {
-    background-color: var(--secondary-color);
+    background: var(--gradient-primary);
     color: white;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    transition: all 0.3s ease;
+    border: none;
 }
 
 .btn-primary:hover {
-    background-color: var(--accent-color);
+    background: var(--gradient-accent);
     transform: translateY(-2px);
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
@@ -611,12 +667,13 @@ body {
     background-color: transparent;
     color: var(--primary-color);
     border: 2px solid var(--primary-color);
-    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 .btn-secondary:hover {
-    background-color: var(--primary-color);
+    background: var(--gradient-secondary);
     color: white;
+    border-color: var(--secondary-color);
     transform: translateY(-2px);
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
@@ -675,11 +732,16 @@ section {
     margin-bottom: 3rem;
     color: var(--primary-color);
     transition: color 0.3s ease;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 /* About Section - Modern Style */
 .about {
-    background: linear-gradient(135deg, #F5F1EB 0%, #E8D5C4 100%);
+    background: var(--bg-secondary);
     color: var(--text-primary);
     transition: background 0.3s ease, color 0.3s ease;
     position: relative;
@@ -717,8 +779,9 @@ section {
 .skills h3 {
     font-size: 1.5rem;
     margin-bottom: 1.5rem;
-    color: var(--text-primary);
+    color: #1B4D3E;
     transition: color 0.3s ease;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 .skills-grid {
@@ -768,8 +831,9 @@ section {
 .education h3 {
     font-size: 1.5rem;
     margin-bottom: 1.5rem;
-    color: var(--text-primary);
+    color: #8B4513;
     transition: color 0.3s ease;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 .education-item {
@@ -812,7 +876,7 @@ section {
 
 /* Projects Section - Modern Cards */
 .projects {
-    background: linear-gradient(135deg, #C4A484 0%, #B8956A 100%);
+    background: var(--bg-accent);
     color: var(--text-primary);
     transition: background 0.3s ease, color 0.3s ease;
     position: relative;
@@ -913,7 +977,7 @@ section {
 
 /* Contact Section - Modern Style */
 .contact {
-    background: linear-gradient(135deg, #D4C5B9 0%, #C4A484 100%);
+    background: var(--bg-tertiary);
     color: var(--text-primary);
     transition: background 0.3s ease, color 0.3s ease;
     position: relative;
@@ -1026,7 +1090,7 @@ section {
 
 /* Footer */
 .footer {
-    background: linear-gradient(135deg, #B8956A 0%, #A68B5B 100%);
+    background: var(--bg-primary);
     color: var(--text-primary);
     text-align: center;
     padding: 2rem 0;
