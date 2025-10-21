@@ -1,19 +1,26 @@
 /* Modern Portfolio Design with Organic Shapes */
 :root {
+    /* Math Education Color Theme */
+    --primary-color: #4A90E2; /* 藍色主題，代表數學邏輯 */
+    --secondary-color: #50C878; /* 綠色，代表成長 */
+    --bg-color: #F8F9FA; /* 淺灰背景，清晰 */
+    --text-color: #333; /* 深灰文字，易讀 */
+    --accent-color: #FFD700; /* 金黃強調，適合數字/按鈕 */
+    
     /* Modern Color Palette */
-    --bg-primary: #f8fafc;
+    --bg-primary: var(--bg-color);
     --bg-secondary: #ffffff;
     --bg-tertiary: #f1f5f9;
     --bg-quaternary: #e2e8f0;
-    --text-primary: #1e293b;
+    --text-primary: var(--text-color);
     --text-secondary: #475569;
-    --text-accent: #3b82f6;
+    --text-accent: var(--primary-color);
     --card-bg: #ffffff;
-    --navbar-bg: rgba(248, 250, 252, 0.95);
+    --navbar-bg: rgba(248, 249, 250, 0.95);
     --shadow: rgba(0, 0, 0, 0.08);
-    --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    --gradient-secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-    --gradient-accent: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    --gradient-primary: linear-gradient(135deg, var(--primary-color) 0%, #3b82f6 100%);
+    --gradient-secondary: linear-gradient(135deg, var(--secondary-color) 0%, #10b981 100%);
+    --gradient-accent: linear-gradient(135deg, var(--accent-color) 0%, #f59e0b 100%);
 }
 
 [data-theme="dark"] {
@@ -39,10 +46,10 @@ html {
 }
 
 body {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
-    color: var(--text-primary);
-    background-color: var(--bg-primary);
+    color: var(--text-color);
+    background: linear-gradient(to bottom, var(--bg-color), #FFFFFF);
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
@@ -254,7 +261,7 @@ body {
 }
 
 .nav-link:hover {
-    color: var(--text-accent);
+    color: var(--primary-color);
 }
 
 .nav-link::after {
@@ -264,7 +271,7 @@ body {
     height: 2px;
     bottom: -5px;
     left: 0;
-    background-color: var(--text-accent);
+    background-color: var(--primary-color);
     transition: width 0.3s ease;
 }
 
@@ -351,7 +358,7 @@ body {
 }
 
 .highlight {
-    color: var(--text-accent);
+    color: var(--primary-color);
 }
 
 .hero-subtitle {
@@ -402,27 +409,27 @@ body {
 }
 
 .btn-primary {
-    background-color: var(--text-accent);
-    color: var(--card-bg);
+    background-color: var(--secondary-color);
+    color: white;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .btn-primary:hover {
-    background-color: var(--text-primary);
+    background-color: var(--accent-color);
     transform: translateY(-2px);
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
 
 .btn-secondary {
     background-color: transparent;
-    color: var(--text-primary);
-    border: 2px solid var(--text-primary);
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
     transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
 .btn-secondary:hover {
-    background-color: var(--text-primary);
-    color: var(--card-bg);
+    background-color: var(--primary-color);
+    color: white;
     transform: translateY(-2px);
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
@@ -479,7 +486,7 @@ section {
     font-size: 2.5rem;
     font-weight: 700;
     margin-bottom: 3rem;
-    color: var(--text-primary);
+    color: var(--primary-color);
     transition: color 0.3s ease;
 }
 
@@ -550,7 +557,7 @@ section {
 
 .skill-item i {
     font-size: 1.5rem;
-    color: var(--text-accent);
+    color: var(--primary-color);
     transition: color 0.3s ease;
 }
 
@@ -592,7 +599,7 @@ section {
 }
 
 .education-item h4 {
-    color: var(--text-accent);
+    color: var(--primary-color);
     font-size: 1.2rem;
     margin-bottom: 0.5rem;
     transition: color 0.3s ease;
@@ -707,7 +714,7 @@ section {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    color: var(--text-accent);
+    color: var(--primary-color);
     text-decoration: none;
     font-weight: 500;
     transition: color 0.3s ease;
@@ -767,7 +774,7 @@ section {
 }
 
 .contact-method i {
-    color: var(--text-accent);
+    color: var(--primary-color);
     width: 20px;
     transition: color 0.3s ease;
 }
@@ -783,7 +790,7 @@ section {
     justify-content: center;
     width: 40px;
     height: 40px;
-    background-color: var(--text-accent);
+    background-color: var(--primary-color);
     color: var(--card-bg);
     border-radius: 50%;
     text-decoration: none;
@@ -822,7 +829,7 @@ section {
 .form-group input:focus,
 .form-group textarea:focus {
     outline: none;
-    border-color: var(--text-accent);
+    border-color: var(--primary-color);
 }
 
 .form-group textarea {
