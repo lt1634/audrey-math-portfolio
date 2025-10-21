@@ -23,21 +23,69 @@
     --gradient-accent: linear-gradient(135deg, var(--accent-color) 0%, #A68B5B 100%);
 }
 
-[data-theme="dark"] {
-    /* Dark Theme */
-    --bg-primary: #0f172a;
-    --bg-secondary: #1e293b;
-    --bg-tertiary: #334155;
-    --bg-quaternary: #475569;
-    --text-primary: #f1f5f9;
-    --text-secondary: #cbd5e1;
-    --text-accent: #60a5fa;
-    --card-bg: #1e293b;
-    --navbar-bg: rgba(15, 23, 42, 0.95);
-    --shadow: rgba(0, 0, 0, 0.3);
-    --gradient-primary: linear-gradient(135deg, #1e40af 0%, #7c3aed 100%);
-    --gradient-secondary: linear-gradient(135deg, #ec4899 0%, #f97316 100%);
-    --gradient-accent: linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%);
+/* Dark Theme Section Backgrounds */
+[data-theme="dark"] .hero {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+}
+
+[data-theme="dark"] .about {
+    background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+}
+
+[data-theme="dark"] .projects {
+    background: linear-gradient(135deg, #334155 0%, #475569 100%);
+}
+
+[data-theme="dark"] .contact {
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+}
+
+[data-theme="dark"] .footer {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+}
+
+[data-theme="dark"] .stage-card {
+    background: rgba(30, 41, 59, 0.9);
+    border: 1px solid rgba(96, 165, 250, 0.3);
+    color: #f1f5f9;
+}
+
+[data-theme="dark"] .stage-card h4 {
+    color: #60a5fa;
+}
+
+[data-theme="dark"] .stage-card p {
+    color: #cbd5e1;
+}
+
+/* Dark Theme Additional Optimizations */
+[data-theme="dark"] .section-title {
+    color: #60a5fa;
+}
+
+[data-theme="dark"] .skills h3,
+[data-theme="dark"] .education h3,
+[data-theme="dark"] .languages h3 {
+    color: #60a5fa;
+}
+
+[data-theme="dark"] .btn-primary {
+    background-color: #10b981;
+    color: #ffffff;
+}
+
+[data-theme="dark"] .btn-primary:hover {
+    background-color: #f59e0b;
+}
+
+[data-theme="dark"] .btn-secondary {
+    color: #60a5fa;
+    border-color: #60a5fa;
+}
+
+[data-theme="dark"] .btn-secondary:hover {
+    background-color: #60a5fa;
+    color: #ffffff;
 }
 
 /* Container and Stages Display */
