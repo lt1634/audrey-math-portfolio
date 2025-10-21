@@ -858,7 +858,32 @@ section {
     transform: translateY(0);
 }
 
-/* Responsive Design */
+/* Responsive Design - Mobile First Approach */
+
+/* Large Mobile Devices */
+@media (max-width: 640px) {
+    .hero-title {
+        font-size: 2.2rem;
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+    
+    .btn {
+        width: 100%;
+        max-width: 280px;
+    }
+    
+    .profile-img {
+        width: 250px;
+        height: 250px;
+    }
+}
+
+/* Tablet and Small Desktop */
 @media (max-width: 768px) {
     .hamburger {
         display: flex;
@@ -935,18 +960,78 @@ section {
     }
 }
 
+/* Small Mobile Devices */
 @media (max-width: 480px) {
     .hero-title {
-        font-size: 2rem;
+        font-size: 1.8rem;
+        line-height: 1.3;
     }
 
     .section-title {
-        font-size: 2rem;
+        font-size: 1.8rem;
     }
 
     .btn {
-        padding: 10px 20px;
+        padding: 12px 20px;
         font-size: 0.9rem;
+    }
+    
+    .profile-img {
+        width: 200px;
+        height: 200px;
+    }
+    
+    .hero-buttons {
+        gap: 0.8rem;
+    }
+    
+    .nav-controls {
+        gap: 0.3rem;
+    }
+    
+    .language-toggle-label,
+    .theme-toggle-label {
+        width: 35px;
+        height: 18px;
+    }
+    
+    .language-toggle-label::before,
+    .theme-toggle-label::before {
+        width: 14px;
+        height: 14px;
+    }
+    
+    .language-toggle-checkbox:checked + .language-toggle-label::before,
+    .theme-toggle-checkbox:checked + .theme-toggle-label::before {
+        transform: translateX(17px);
+    }
+}
+
+/* Large Desktop Screens */
+@media (min-width: 1440px) {
+    .container {
+        max-width: 1400px;
+    }
+    
+    .hero-title {
+        font-size: 4rem;
+    }
+    
+    .section-title {
+        font-size: 3rem;
+    }
+    
+    .profile-img {
+        width: 350px;
+        height: 350px;
+    }
+    
+    .projects-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .skills-grid {
+        grid-template-columns: repeat(6, 1fr);
     }
 }
 
