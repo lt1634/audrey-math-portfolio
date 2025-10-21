@@ -88,6 +88,65 @@
     color: #ffffff;
 }
 
+/* Dark Mode Card Backgrounds */
+[data-theme="dark"] .skill-item {
+    background: rgba(30, 41, 59, 0.8);
+    border: 1px solid rgba(96, 165, 250, 0.2);
+    color: #cbd5e1;
+}
+
+[data-theme="dark"] .skill-item i {
+    color: #60a5fa;
+}
+
+[data-theme="dark"] .skill-item span {
+    color: #cbd5e1;
+}
+
+[data-theme="dark"] .project-card {
+    background: rgba(30, 41, 59, 0.9);
+    border: 1px solid rgba(96, 165, 250, 0.3);
+}
+
+[data-theme="dark"] .project-content h3 {
+    color: #60a5fa;
+}
+
+[data-theme="dark"] .project-content p {
+    color: #cbd5e1;
+}
+
+[data-theme="dark"] .contact-form {
+    background: rgba(30, 41, 59, 0.8);
+    border: 1px solid rgba(96, 165, 250, 0.3);
+}
+
+[data-theme="dark"] .contact-form input,
+[data-theme="dark"] .contact-form textarea {
+    background: rgba(15, 23, 42, 0.8);
+    border: 1px solid rgba(96, 165, 250, 0.3);
+    color: #f1f5f9;
+}
+
+[data-theme="dark"] .contact-form input::placeholder,
+[data-theme="dark"] .contact-form textarea::placeholder {
+    color: #94a3b8;
+}
+
+/* Dark Mode Navigation */
+[data-theme="dark"] .nav-menu {
+    background-color: #1e293b;
+    box-shadow: 0 10px 27px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .nav-link {
+    color: #cbd5e1;
+}
+
+[data-theme="dark"] .nav-link:hover {
+    color: #60a5fa;
+}
+
 /* Container and Stages Display */
 .container {
     max-width: 1200px;
