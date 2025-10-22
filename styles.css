@@ -1232,6 +1232,26 @@ section {
     margin: 0;
 }
 
+.resources-description {
+    margin-top: 1.5rem;
+    padding: 1.5rem;
+    background: var(--bg-accent);
+    border-radius: 15px;
+    border-left: 4px solid var(--primary-color);
+}
+
+.resources-description p {
+    font-size: 1rem;
+    color: var(--text-primary);
+    line-height: 1.6;
+    margin: 0;
+}
+
+.resources-description strong {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
 .resources-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));

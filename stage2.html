@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stage 2: Operations - Audrey Math</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .stage-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            min-height: 100vh;
+            background: var(--bg-primary);
+            padding-top: 6rem;
+        }
+        
+        .stage-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 2rem 0;
+            background: var(--bg-secondary);
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .header-text {
+            flex: 1;
+            text-align: left;
+        }
+        
+        .header-image {
+            flex: 1;
+            text-align: center;
+        }
+        
+        .hero-image {
+            width: 100%;
+            max-width: 400px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .stage-title {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .stage-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+        
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: var(--gradient-secondary);
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-bottom: 2rem;
+            margin-top: 2rem;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .back-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .goals-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .goal-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            border-left: 4px solid var(--secondary-color);
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+        
+        .goal-image {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .card-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .goal-card:hover .card-image {
+            transform: scale(1.05);
+        }
+        
+        .goal-content {
+            padding: 2rem;
+        }
+        
+        .goal-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .goal-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .goal-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+        
+        .goal-description {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+        
+        .goal-example {
+            background: var(--bg-accent);
+            padding: 1rem;
+            border-radius: 10px;
+            font-style: italic;
+            color: var(--text-primary);
+            border-left: 3px solid var(--primary-color);
+        }
+        
+        .activities-section {
+            background: var(--bg-secondary);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        .activities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .activity-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 0;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+        
+        .activity-image {
+            width: 100%;
+            height: 150px;
+            overflow: hidden;
+        }
+        
+        .activity-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .activity-card:hover .activity-img {
+            transform: scale(1.05);
+        }
+        
+        .activity-content {
+            padding: 1.5rem;
+        }
+        
+        .activity-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .activity-icon {
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .activity-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .activity-description {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        
+        .timeline-section {
+            background: var(--bg-tertiary);
+            border-radius: 20px;
+            padding: 2rem;
+        }
+        
+        .timeline-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: var(--card-bg);
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .timeline-week {
+            background: var(--gradient-secondary);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 600;
+            margin-right: 1rem;
+            min-width: 100px;
+            text-align: center;
+        }
+        
+        .timeline-content {
+            flex: 1;
+            color: var(--text-primary);
+        }
+        
+        @media (max-width: 768px) {
+            .stage-container {
+                padding: 1rem;
+                padding-top: 5rem;
+            }
+            
+            .stage-title {
+                font-size: 2.5rem;
+            }
+            
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .header-text {
+                text-align: center;
+                margin-bottom: 2rem;
+            }
+            
+            .hero-image {
+                max-width: 300px;
+                height: 200px;
+            }
+            
+            .goals-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .activities-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="audrey-math-logo.svg" alt="Audrey Math Logo" class="logo-img">
+            </div>
+            <div class="nav-controls">
+                <div class="language-toggle">
+                    <input type="checkbox" id="language-toggle" class="language-toggle-checkbox">
+                    <label for="language-toggle" class="language-toggle-label">
+                        <span class="en-icon">🇺🇸</span>
+                        <span class="zh-icon">🇹🇼</span>
+                    </label>
+                </div>
+                <div class="theme-toggle">
+                    <input type="checkbox" id="theme-toggle" class="theme-toggle-checkbox">
+                    <label for="theme-toggle" class="theme-toggle-label">
+                        <span class="sun-icon">☀️</span>
+                        <span class="moon-icon">🌙</span>
+                    </label>
+                </div>
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link" data-en="Home" data-zh="首頁">Home</a>
+                <a href="index.html#about" class="nav-link" data-en="About" data-zh="關於">About</a>
+                <a href="index.html#projects" class="nav-link" data-en="Courses" data-zh="課程">Courses</a>
+                <a href="index.html#contact" class="nav-link" data-en="Contact" data-zh="聯絡">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="stage-container">
+        <a href="index.html" class="back-button">
+            <i class="fas fa-arrow-left"></i>
+            <span data-en="Back to Home" data-zh="返回首頁">Back to Home</span>
+        </a>
+        
+        <div class="stage-header">
+            <div class="header-content">
+                <div class="header-text">
+                    <h1 class="stage-title" data-en="Stage 2: Operations" data-zh="階段二：運算">Stage 2: Operations</h1>
+                    <p class="stage-subtitle" data-en="Addition/Subtraction for 4-Year-Olds" data-zh="4歲兒童加法/減法">Addition/Subtraction for 4-Year-Olds</p>
+                </div>
+                <div class="header-image">
+                    <img src="https://images.unsplash.com/photo-1509228468518-180dd4864904?w=400&h=300&fit=crop" alt="Children learning math operations" class="hero-image">
+                </div>
+            </div>
+        </div>
+        
+        <div class="goals-grid">
+            <div class="goal-card">
+                <div class="goal-image">
+                    <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=300&h=200&fit=crop" alt="Children combining objects" class="card-image">
+                </div>
+                <div class="goal-number">1</div>
+                <div class="goal-content">
+                    <h3 class="goal-title" data-en="Understand Addition as Combining" data-zh="理解加法為組合">Understand Addition as Combining</h3>
+                    <p class="goal-description" data-en="Children learn that addition means putting groups together to make a bigger group." data-zh="孩子們學習加法意味著將群組放在一起形成更大的群組。">Children learn that addition means putting groups together to make a bigger group.</p>
+                    <div class="goal-example">
+                        <strong data-en="Example:" data-zh="例子：">Example:</strong> <span data-en="3 apples + 2 apples = 5 apples" data-zh="3個蘋果 + 2個蘋果 = 5個蘋果">3 apples + 2 apples = 5 apples</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="goal-card">
+                <div class="goal-image">
+                    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&h=200&fit=crop" alt="Children taking away objects" class="card-image">
+                </div>
+                <div class="goal-number">2</div>
+                <div class="goal-content">
+                    <h3 class="goal-title" data-en="Simple Subtraction" data-zh="簡單減法">Simple Subtraction</h3>
+                    <p class="goal-description" data-en="Children understand subtraction as taking away or removing objects from a group." data-zh="孩子們理解減法是從群組中拿走或移除物件。">Children understand subtraction as taking away or removing objects from a group.</p>
+                    <div class="goal-example">
+                        <strong data-en="Example:" data-zh="例子：">Example:</strong> <span data-en="5 cookies - 2 cookies = 3 cookies" data-zh="5塊餅乾 - 2塊餅乾 = 3塊餅乾">5 cookies - 2 cookies = 3 cookies</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="goal-card">
+                <div class="goal-image">
+                    <img src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=300&h=200&fit=crop" alt="Children using objects for math" class="card-image">
+                </div>
+                <div class="goal-number">3</div>
+                <div class="goal-content">
+                    <h3 class="goal-title" data-en="Use Objects for Operations up to 10" data-zh="使用物件進行最多到10的運算">Use Objects for Operations up to 10</h3>
+                    <p class="goal-description" data-en="Children can solve addition and subtraction problems using physical objects as manipulatives." data-zh="孩子們可以使用實體物件作為操作工具來解決加法和減法問題。">Children can solve addition and subtraction problems using physical objects as manipulatives.</p>
+                    <div class="goal-example">
+                        <strong data-en="Example:" data-zh="例子：">Example:</strong> <span data-en="Using toy cars, blocks, or fingers to count" data-zh="使用玩具車、積木或手指來計數">Using toy cars, blocks, or fingers to count</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="goal-card">
+                <div class="goal-image">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=200&fit=crop" alt="Children solving word problems" class="card-image">
+                </div>
+                <div class="goal-number">4</div>
+                <div class="goal-content">
+                    <h3 class="goal-title" data-en="Word Problems like 'How Many Left?'" data-zh="像「還剩多少？」的應用題">Word Problems like 'How Many Left?'</h3>
+                    <p class="goal-description" data-en="Children can solve simple word problems involving addition and subtraction in real-life contexts." data-zh="孩子們可以解決涉及現實生活中加法和減法的簡單應用題。">Children can solve simple word problems involving addition and subtraction in real-life contexts.</p>
+                    <div class="goal-example">
+                        <strong data-en="Example:" data-zh="例子：">Example:</strong> <span data-en="'I had 7 stickers, gave away 3. How many left?'" data-zh="「我有7張貼紙，送出了3張。還剩多少？」">'I had 7 stickers, gave away 3. How many left?'</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="goal-card">
+                <div class="goal-image">
+                    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&h=200&fit=crop" alt="Children writing equations" class="card-image">
+                </div>
+                <div class="goal-number">5</div>
+                <div class="goal-content">
+                    <h3 class="goal-title" data-en="Basic Equations" data-zh="基本方程式">Basic Equations</h3>
+                    <p class="goal-description" data-en="Children can recognize and work with simple mathematical equations using symbols." data-zh="孩子們可以識別和使用符號處理簡單的數學方程式。">Children can recognize and work with simple mathematical equations using symbols.</p>
+                    <div class="goal-example">
+                        <strong data-en="Example:" data-zh="例子：">Example:</strong> <span data-en="2 + 3 = 5, 8 - 2 = 6" data-zh="2 + 3 = 5, 8 - 2 = 6">2 + 3 = 5, 8 - 2 = 6</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="activities-section">
+            <h2 class="section-title" data-en="🎨 Fun & Interactive Activities" data-zh="🎨 有趣和互動活動">🎨 Fun & Interactive Activities</h2>
+            <div class="activities-grid">
+                <div class="activity-card">
+                    <div class="activity-image">
+                        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=250&h=150&fit=crop" alt="Toy math activities" class="activity-img">
+                    </div>
+                    <div class="activity-icon">🧸</div>
+                    <div class="activity-content">
+                        <h3 class="activity-title" data-en="Toy Math" data-zh="玩具數學">Toy Math</h3>
+                        <p class="activity-description" data-en="Using toys for addition and subtraction: toy cars, dolls, blocks, and stuffed animals" data-zh="使用玩具進行加法和減法：玩具車、娃娃、積木和毛絨玩具">Using toys for addition and subtraction: toy cars, dolls, blocks, and stuffed animals</p>
+                    </div>
+                </div>
+                
+                <div class="activity-card">
+                    <div class="activity-image">
+                        <img src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=250&h=150&fit=crop" alt="Musical adding activities" class="activity-img">
+                    </div>
+                    <div class="activity-icon">🎵</div>
+                    <div class="activity-content">
+                        <h3 class="activity-title" data-en="Musical Adding" data-zh="音樂加法">Musical Adding</h3>
+                        <p class="activity-description" data-en="Singing addition songs, clapping rhythms, and dancing to number patterns" data-zh="唱加法歌曲、拍手節奏和跟著數字模式跳舞">Singing addition songs, clapping rhythms, and dancing to number patterns</p>
+                    </div>
+                </div>
+                
+                <div class="activity-card">
+                    <div class="activity-image">
+                        <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=250&h=150&fit=crop" alt="Daily shopping math" class="activity-img">
+                    </div>
+                    <div class="activity-icon">🛒</div>
+                    <div class="activity-content">
+                        <h3 class="activity-title" data-en="Daily Shopping Math" data-zh="日常購物數學">Daily Shopping Math</h3>
+                        <p class="activity-description" data-en="Counting items at stores, adding prices, and subtracting items from shopping lists" data-zh="在商店數物品、加價格和從購物清單中減去物品">Counting items at stores, adding prices, and subtracting items from shopping lists</p>
+                    </div>
+                </div>
+                
+                <div class="activity-card">
+                    <div class="activity-image">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=250&h=150&fit=crop" alt="Confidence rewards" class="activity-img">
+                    </div>
+                    <div class="activity-icon">🏆</div>
+                    <div class="activity-content">
+                        <h3 class="activity-title" data-en="Confidence Rewards" data-zh="信心獎勵">Confidence Rewards</h3>
+                        <p class="activity-description" data-en="Celebrating correct answers, progress stickers, and positive reinforcement for math achievements" data-zh="慶祝正確答案、進度貼紙和對數學成就的正面強化">Celebrating correct answers, progress stickers, and positive reinforcement for math achievements</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="timeline-section">
+            <h2 class="section-title" data-en="📅 Implementation Timeline" data-zh="📅 實施時間表">📅 Implementation Timeline</h2>
+            <div class="timeline-item">
+                <div class="timeline-week" data-en="Week 1-2" data-zh="第1-2週">Week 1-2</div>
+                <div class="timeline-content" data-en="Addition 1-5: Combining small groups with toys and songs" data-zh="加法1-5：使用玩具和歌曲組合小群組">Addition 1-5: Combining small groups with toys and songs</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-week" data-en="Week 3-4" data-zh="第3-4週">Week 3-4</div>
+                <div class="timeline-content" data-en="Subtraction: Taking away objects and understanding 'how many left'" data-zh="減法：拿走物件並理解「還剩多少」">Subtraction: Taking away objects and understanding 'how many left'</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-week" data-en="Week 5-6" data-zh="第5-6週">Week 5-6</div>
+                <div class="timeline-content" data-en="Mixed Operations: Combining addition and subtraction in daily activities" data-zh="混合運算：在日常活動中結合加法和減法">Mixed Operations: Combining addition and subtraction in daily activities</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-week" data-en="Week 7-8" data-zh="第7-8週">Week 7-8</div>
+                <div class="timeline-content" data-en="Review and Mastery: Strengthening skills and building confidence" data-zh="複習和精通：強化技能並建立信心">Review and Mastery: Strengthening skills and building confidence</div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
