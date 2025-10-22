@@ -383,6 +383,12 @@ function initGameButtons() {
     
     gamePlayBtns.forEach(btn => {
         btn.addEventListener('click', (e) => {
+            // Check if it's a link to a game page (like mighty-mind.html)
+            if (btn.tagName === 'A' && btn.href) {
+                // Let the link work normally for actual game pages
+                return;
+            }
+            
             e.preventDefault();
             const gameCard = btn.closest('.game-card');
             const gameTitle = gameCard.querySelector('h3').textContent;
