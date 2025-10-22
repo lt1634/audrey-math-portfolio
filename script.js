@@ -413,6 +413,20 @@ function initResourceLinks() {
     });
 }
 
+// Navigation smooth scrolling
+function initNavigationScroll() {
+    const navLinks = document.querySelectorAll('.nav-link');
+    navLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const target = document.querySelector(link.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    });
+}
+
 // Initialize all features when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     initScrollAnimations();
@@ -423,6 +437,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initParallaxEffect();
     initGameButtons();
     initResourceLinks();
+    initNavigationScroll();
     
     // Add loading animation to page
     document.body.style.opacity = '0';

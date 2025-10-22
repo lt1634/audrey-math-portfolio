@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stage 6: Mastery - Audrey Math</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .stage-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            min-height: 100vh;
+            background: var(--bg-primary);
+            padding-top: 6rem;
+        }
+        
+        .stage-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 2rem 0;
+            background: var(--bg-secondary);
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .header-text {
+            flex: 1;
+            text-align: left;
+        }
+        
+        .header-image {
+            flex: 1;
+            text-align: center;
+        }
+        
+        .hero-image {
+            width: 100%;
+            max-width: 400px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .stage-title {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .stage-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+        
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: var(--gradient-secondary);
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-bottom: 2rem;
+            margin-top: 2rem;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .back-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .goals-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .goal-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            border-left: 4px solid var(--quinary-color);
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+        
+        .goal-image {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .card-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .goal-card:hover .card-image {
+            transform: scale(1.05);
+        }
+        
+        .goal-content {
+            padding: 2rem;
+        }
+        
+        .goal-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .goal-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--quinary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .goal-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+        
+        .goal-description {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+        
+        .goal-example {
+            background: var(--bg-accent);
+            padding: 1rem;
+            border-radius: 10px;
+            font-style: italic;
+            color: var(--text-primary);
+            border-left: 3px solid var(--primary-color);
+        }
+        
+        .activities-section {
+            background: var(--bg-secondary);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        .activities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .activity-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 0;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+        
+        .activity-image {
+            width: 100%;
+            height: 150px;
+            overflow: hidden;
+        }
+        
+        .activity-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .activity-card:hover .activity-img {
+            transform: scale(1.05);
+        }
+        
+        .activity-content {
+            padding: 1.5rem;
+        }
+        
+        .activity-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .activity-icon {
+            font-size: 2.5rem;
+            color: var(--quinary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .activity-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .activity-description {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        
+        .timeline-section {
+            background: var(--bg-tertiary);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .timeline-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: var(--card-bg);
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .timeline-week {
+            background: var(--gradient-secondary);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 600;
+            margin-right: 1rem;
+            min-width: 100px;
+            text-align: center;
+        }
+        
+        .timeline-content {
+            flex: 1;
+            color: var(--text-primary);
+        }
+        
+        .footer-theory {
+            background: var(--bg-secondary);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-top: 3rem;
+            text-align: center;
+            border-top: 3px solid var(--primary-color);
+        }
+        
+        .theory-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .theory-steps {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+        
+        .theory-step {
+            background: var(--card-bg);
+            padding: 0.75rem 1rem;
+            border-radius: 10px;
+            font-weight: 600;
+            color: var(--text-primary);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .theory-arrow {
+            color: var(--primary-color);
+            font-size: 1.2rem;
+        }
+        
+        @media (max-width: 768px) {
+            .stage-container {
+                padding: 1rem;
+                padding-top: 5rem;
+            }
+            
+            .stage-title {
+                font-size: 2.5rem;
+            }
+            
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .header-text {
+                text-align: center;
+                margin-bottom: 2rem;
+            }
+            
+            .hero-image {
+                max-width: 300px;
+                height: 200px;
+            }
+            
+            .goals-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .activities-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .theory-steps {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            .theory-arrow {
+                transform: rotate(90deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="audrey-math-logo.svg" alt="Audrey Math Logo" class="logo-img">
+            </div>
+            <div class="nav-controls">
+                <div class="language-toggle">
+                    <input type="checkbox" id="language-toggle" class="language-toggle-checkbox">
+                    <label for="language-toggle" class="language-toggle-label">
+                        <span class="en-icon">🇺🇸</span>
+                        <span class="zh-icon">🇹🇼</span>
+                    </label>
+                </div>
+                <div class="theme-toggle">
+                    <input type="checkbox" id="theme-toggle" class="theme-toggle-checkbox">
+                    <label for="theme-toggle" class="theme-toggle-label">
+                        <span class="sun-icon">☀️</span>
+                        <span class="moon-icon">🌙</span>
+                    </label>
+                </div>
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link" data-en="Home" data-zh="首頁">Home</a>
+                <a href="index.html#about" class="nav-link" data-en="About" data-zh="關於">About</a>
+                <a href="index.html#games" class="nav-link" data-en="Games" data-zh="遊戲">Games</a>
+                <a href="index.html#projects" class="nav-link" data-en="Courses" data-zh="課程">Courses</a>
+                <a href="index.html#contact" class="nav-link" data-en="Contact" data-zh="聯絡">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="stage-container">
+        <a href="index.html" class="back-button">
+            <i class="fas fa-arrow-left"></i>
+            <span data-en="Back to Home" data-zh="返回首頁">Back to Home</span>
+        </a>
+        
+        <div class="stage-header">
+            <div class="header-content">
+                <div class="header-text">
+                    <h1 class="stage-title" data-en="Stage 6: Mastery" data-zh="階段六：精通">Stage 6: Mastery</h1>
+                    <p class="stage-subtitle" data-en="Complex Problems for 8+ Year-Olds" data-zh="8歲以上兒童複雜問題">Complex Problems for 8+ Year-Olds</p>
+                </div>
+                <div class="header-image">
+                    <img src="https://images.unsplash.com/photo-1509228468518-180dd4864904?w=400&h=300&fit=crop" alt="Children mastering math" class="hero-image">
+                </div>
+            </div>
+        </div>
+        
+        <div class="goals-grid">
+            <div class="goal-card">
+                <div class="goal-image">
+                    <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=300&h=200&fit=crop" alt="Children solving complex problems" class="card-image">
+                </div>
+                <div class="goal-number">1</div>
+                <div class="goal-content">
+                    <h3 class="goal-title" data-en="Complex Problem Solving" data-zh="複雜問題解決">Complex Problem Solving</h3>
+                    <p class="goal-description" data-en="Children can solve multi-step problems involving multiple mathematical concepts and operations." data-zh="孩子們可以解決涉及多個數學概念和運算的多步驟問題。">Children can solve multi-step problems involving multiple mathematical concepts and operations.</p>
+                    <div class="goal-example">
+                        <strong data-en="Example:" data-zh="例子：">Example:</strong> <span data-en="'If a pizza has 8 slices and 3 friends each eat 2 slices, how many slices are left?'" data-zh="「如果一個披薩有8片，3個朋友每人吃2片，還剩多少片？」">'If a pizza has 8 slices and 3 friends each eat 2 slices, how many slices are left?'</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="goal-card">
+                <div class="goal-image">
+                    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&h=200&fit=crop" alt="Children using advanced strategies" class="card-image">
+                </div>
+                <div class="goal-number">2</div>
+                <div class="goal-content">
+                    <h3 class="goal-title" data-en="Advanced Strategies" data-zh="高級策略">Advanced Strategies</h3>
+                    <p class="goal-description" data-en="Children develop and apply sophisticated problem-solving strategies and mathematical reasoning." data-zh="孩子們發展並應用複雜的問題解決策略和數學推理。">Children develop and apply sophisticated problem-solving strategies and mathematical reasoning.</p>
+                    <div class="goal-example">
+                        <strong data-en="Example:" data-zh="例子：">Example:</strong> <span data-en="Working backwards, drawing diagrams, making tables" data-zh="逆向思考、畫圖表、製作表格">Working backwards, drawing diagrams, making tables</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="goal-card">
+                <div class="goal-image">
+                    <img src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=300&h=200&fit=crop" alt="Children explaining solutions" class="card-image">
+                </div>
+                <div class="goal-number">3</div>
+                <div class="goal-content">
+                    <h3 class="goal-title" data-en="Mathematical Communication" data-zh="數學溝通">Mathematical Communication</h3>
+                    <p class="goal-description" data-en="Children can clearly explain their mathematical thinking and justify their solutions to others." data-zh="孩子們可以清楚地解釋他們的數學思考並為他們的解決方案向他人提供理由。">Children can clearly explain their mathematical thinking and justify their solutions to others.</p>
+                    <div class="goal-example">
+                        <strong data-en="Example:" data-zh="例子：">Example:</strong> <span data-en="Presenting solutions, teaching peers, writing explanations" data-zh="展示解決方案、教導同儕、寫解釋">Presenting solutions, teaching peers, writing explanations</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="goal-card">
+                <div class="goal-image">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=200&fit=crop" alt="Children working independently" class="card-image">
+                </div>
+                <div class="goal-number">4</div>
+                <div class="goal-content">
+                    <h3 class="goal-title" data-en="Independent Learning" data-zh="獨立學習">Independent Learning</h3>
+                    <p class="goal-description" data-en="Children can work independently on challenging problems and seek help when needed." data-zh="孩子們可以獨立處理具有挑戰性的問題，並在需要時尋求幫助。">Children can work independently on challenging problems and seek help when needed.</p>
+                    <div class="goal-example">
+                        <strong data-en="Example:" data-zh="例子：">Example:</strong> <span data-en="Self-directed problem solving, asking clarifying questions" data-zh="自主問題解決、提出澄清問題">Self-directed problem solving, asking clarifying questions</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="goal-card">
+                <div class="goal-image">
+                    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&h=200&fit=crop" alt="Children applying math to real life" class="card-image">
+                </div>
+                <div class="goal-number">5</div>
+                <div class="goal-content">
+                    <h3 class="goal-title" data-en="Real-World Application" data-zh="現實世界應用">Real-World Application</h3>
+                    <p class="goal-description" data-en="Children can apply mathematical concepts to solve real-world problems and make informed decisions." data-zh="孩子們可以應用數學概念來解決現實世界的問題並做出明智的決定。">Children can apply mathematical concepts to solve real-world problems and make informed decisions.</p>
+                    <div class="goal-example">
+                        <strong data-en="Example:" data-zh="例子：">Example:</strong> <span data-en="Budget planning, recipe scaling, travel calculations" data-zh="預算規劃、食譜縮放、旅行計算">Budget planning, recipe scaling, travel calculations</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="activities-section">
+            <h2 class="section-title" data-en="🎨 Fun & Interactive Activities" data-zh="🎨 有趣和互動活動">🎨 Fun & Interactive Activities</h2>
+            <div class="activities-grid">
+                <div class="activity-card">
+                    <div class="activity-image">
+                        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=250&h=150&fit=crop" alt="Math competitions" class="activity-img">
+                    </div>
+                    <div class="activity-icon">🏆</div>
+                    <div class="activity-content">
+                        <h3 class="activity-title" data-en="Math Competitions" data-zh="數學競賽">Math Competitions</h3>
+                        <p class="activity-description" data-en="Participating in math contests, puzzles, and challenge problems" data-zh="參與數學競賽、謎題和挑戰問題">Participating in math contests, puzzles, and challenge problems</p>
+                    </div>
+                </div>
+                
+                <div class="activity-card">
+                    <div class="activity-image">
+                        <img src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=250&h=150&fit=crop" alt="Project-based learning" class="activity-img">
+                    </div>
+                    <div class="activity-icon">📊</div>
+                    <div class="activity-content">
+                        <h3 class="activity-title" data-en="Project-Based Learning" data-zh="專案學習">Project-Based Learning</h3>
+                        <p class="activity-description" data-en="Long-term projects involving data analysis, statistics, and mathematical modeling" data-zh="涉及數據分析、統計和數學建模的長期專案">Long-term projects involving data analysis, statistics, and mathematical modeling</p>
+                    </div>
+                </div>
+                
+                <div class="activity-card">
+                    <div class="activity-image">
+                        <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=250&h=150&fit=crop" alt="Peer teaching" class="activity-img">
+                    </div>
+                    <div class="activity-icon">👥</div>
+                    <div class="activity-content">
+                        <h3 class="activity-title" data-en="Peer Teaching" data-zh="同儕教學">Peer Teaching</h3>
+                        <p class="activity-description" data-en="Teaching younger students and explaining complex concepts to others" data-zh="教導年幼學生並向他人解釋複雜概念">Teaching younger students and explaining complex concepts to others</p>
+                    </div>
+                </div>
+                
+                <div class="activity-card">
+                    <div class="activity-image">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=250&h=150&fit=crop" alt="Real-world projects" class="activity-img">
+                    </div>
+                    <div class="activity-icon">🌍</div>
+                    <div class="activity-content">
+                        <h3 class="activity-title" data-en="Real-World Projects" data-zh="現實世界專案">Real-World Projects</h3>
+                        <p class="activity-description" data-en="Community service projects, environmental studies, and social impact calculations" data-zh="社區服務專案、環境研究和社會影響計算">Community service projects, environmental studies, and social impact calculations</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="timeline-section">
+            <h2 class="section-title" data-en="📅 Implementation Timeline" data-zh="📅 實施時間表">📅 Implementation Timeline</h2>
+            <div class="timeline-item">
+                <div class="timeline-week" data-en="Week 1-2" data-zh="第1-2週">Week 1-2</div>
+                <div class="timeline-content" data-en="Complex Problem Introduction: Multi-step word problems and advanced strategies" data-zh="複雜問題介紹：多步驟應用題和高級策略">Complex Problem Introduction: Multi-step word problems and advanced strategies</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-week" data-en="Week 3-4" data-zh="第3-4週">Week 3-4</div>
+                <div class="timeline-content" data-en="Mathematical Communication: Explaining solutions and teaching others" data-zh="數學溝通：解釋解決方案和教導他人">Mathematical Communication: Explaining solutions and teaching others</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-week" data-en="Week 5-6" data-zh="第5-6週">Week 5-6</div>
+                <div class="timeline-content" data-en="Independent Learning: Self-directed problem solving and research" data-zh="獨立學習：自主問題解決和研究">Independent Learning: Self-directed problem solving and research</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-week" data-en="Week 7-8" data-zh="第7-8週">Week 7-8</div>
+                <div class="timeline-content" data-en="Real-World Mastery: Applying math to solve community and global challenges" data-zh="現實世界精通：應用數學解決社區和全球挑戰">Real-World Mastery: Applying math to solve community and global challenges</div>
+            </div>
+        </div>
+        
+        <div class="footer-theory">
+            <h3 class="theory-title" data-en="Based on Play-Based Learning Methodology" data-zh="基於以玩為基礎的學習方法論">Based on Play-Based Learning Methodology</h3>
+            <div class="theory-steps">
+                <div class="theory-step" data-en="Question" data-zh="發問">Question</div>
+                <div class="theory-arrow">→</div>
+                <div class="theory-step" data-en="Observe" data-zh="觀察">Observe</div>
+                <div class="theory-arrow">→</div>
+                <div class="theory-step" data-en="Hypothesize" data-zh="假設">Hypothesize</div>
+                <div class="theory-arrow">→</div>
+                <div class="theory-step" data-en="Act" data-zh="行動">Act</div>
+                <div class="theory-arrow">→</div>
+                <div class="theory-step" data-en="Evaluate" data-zh="評估">Evaluate</div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stage 5: Geometry - Audrey Math</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .stage-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            min-height: 100vh;
+            background: var(--bg-primary);
+            padding-top: 6rem;
+        }
+        
+        .stage-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 2rem 0;
+            background: var(--bg-secondary);
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .header-text {
+            flex: 1;
+            text-align: left;
+        }
+        
+        .header-image {
+            flex: 1;
+            text-align: center;
+        }
+        
+        .hero-image {
+            width: 100%;
+            max-width: 400px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .stage-title {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .stage-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+        
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: var(--gradient-secondary);
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-bottom: 2rem;
+            margin-top: 2rem;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .back-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .goals-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .goal-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            border-left: 4px solid var(--quaternary-color);
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+        
+        .goal-image {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .card-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .goal-card:hover .card-image {
+            transform: scale(1.05);
+        }
+        
+        .goal-content {
+            padding: 2rem;
+        }
+        
+        .goal-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .goal-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--quaternary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .goal-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+        
+        .goal-description {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+        
+        .goal-example {
+            background: var(--bg-accent);
+            padding: 1rem;
+            border-radius: 10px;
+            font-style: italic;
+            color: var(--text-primary);
+            border-left: 3px solid var(--primary-color);
+        }
+        
+        .activities-section {
+            background: var(--bg-secondary);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        .activities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .activity-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 0;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+        
+        .activity-image {
+            width: 100%;
+            height: 150px;
+            overflow: hidden;
+        }
+        
+        .activity-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .activity-card:hover .activity-img {
+            transform: scale(1.05);
+        }
+        
+        .activity-content {
+            padding: 1.5rem;
+        }
+        
+        .activity-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .activity-icon {
+            font-size: 2.5rem;
+            color: var(--quaternary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .activity-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .activity-description {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        
+        .timeline-section {
+            background: var(--bg-tertiary);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .timeline-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: var(--card-bg);
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .timeline-week {
+            background: var(--gradient-secondary);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 600;
+            margin-right: 1rem;
+            min-width: 100px;
+            text-align: center;
+        }
+        
+        .timeline-content {
+            flex: 1;
+            color: var(--text-primary);
+        }
+        
+        .footer-theory {
+            background: var(--bg-secondary);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-top: 3rem;
+            text-align: center;
+            border-top: 3px solid var(--primary-color);
+        }
+        
+        .theory-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .theory-steps {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+        
+        .theory-step {
+            background: var(--card-bg);
+            padding: 0.75rem 1rem;
+            border-radius: 10px;
+            font-weight: 600;
+            color: var(--text-primary);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .theory-arrow {
+            color: var(--primary-color);
+            font-size: 1.2rem;
+        }
+        
+        @media (max-width: 768px) {
+            .stage-container {
+                padding: 1rem;
+                padding-top: 5rem;
+            }
+            
+            .stage-title {
+                font-size: 2.5rem;
+            }
+            
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .header-text {
+                text-align: center;
+                margin-bottom: 2rem;
+            }
+            
+            .hero-image {
+                max-width: 300px;
+                height: 200px;
+            }
+            
+            .goals-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .activities-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .theory-steps {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            .theory-arrow {
+                transform: rotate(90deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="audrey-math-logo.svg" alt="Audrey Math Logo" class="logo-img">
+            </div>
+            <div class="nav-controls">
+                <div class="language-toggle">
+                    <input type="checkbox" id="language-toggle" class="language-toggle-checkbox">
+                    <label for="language-toggle" class="language-toggle-label">
+                        <span class="en-icon">🇺🇸</span>
+                        <span class="zh-icon">🇹🇼</span>
+                    </label>
+                </div>
+                <div class="theme-toggle">
+                    <input type="checkbox" id="theme-toggle" class="theme-toggle-checkbox">
+                    <label for="theme-toggle" class="theme-toggle-label">
+                        <span class="sun-icon">☀️</span>
+                        <span class="moon-icon">🌙</span>
+                    </label>
+                </div>
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link" data-en="Home" data-zh="首頁">Home</a>
+                <a href="index.html#about" class="nav-link" data-en="About" data-zh="關於">About</a>
+                <a href="index.html#games" class="nav-link" data-en="Games" data-zh="遊戲">Games</a>
+                <a href="index.html#projects" class="nav-link" data-en="Courses" data-zh="課程">Courses</a>
+                <a href="index.html#contact" class="nav-link" data-en="Contact" data-zh="聯絡">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="stage-container">
+        <a href="index.html" class="back-button">
+            <i class="fas fa-arrow-left"></i>
+            <span data-en="Back to Home" data-zh="返回首頁">Back to Home</span>
+        </a>
+        
+        <div class="stage-header">
+            <div class="header-content">
+                <div class="header-text">
+                    <h1 class="stage-title" data-en="Stage 5: Geometry" data-zh="階段五：幾何">Stage 5: Geometry</h1>
+                    <p class="stage-subtitle" data-en="Shapes and Measurements for 7-Year-Olds" data-zh="7歲兒童形狀和測量">Shapes and Measurements for 7-Year-Olds</p>
+                </div>
+                <div class="header-image">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=300&fit=crop" alt="Children learning geometry" class="hero-image">
+                </div>
+            </div>
+        </div>
+        
+        <div class="goals-grid">
+            <div class="goal-card">
+                <div class="goal-image">
+                    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&h=200&fit=crop" alt="Children identifying shapes" class="card-image">
+                </div>
+                <div class="goal-number">1</div>
+                <div class="goal-content">
+                    <h3 class="goal-title" data-en="Shape Recognition" data-zh="形狀識別">Shape Recognition</h3>
+                    <p class="goal-description" data-en="Children can identify and name basic geometric shapes in 2D and 3D forms." data-zh="孩子們可以識別和命名2D和3D形式的基本幾何形狀。">Children can identify and name basic geometric shapes in 2D and 3D forms.</p>
+                    <div class="goal-example">
+                        <strong data-en="Example:" data-zh="例子：">Example:</strong> <span data-en="Circle, square, triangle, rectangle, cube, sphere" data-zh="圓形、正方形、三角形、長方形、立方體、球體">Circle, square, triangle, rectangle, cube, sphere</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="goal-card">
+                <div class="goal-image">
+                    <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=300&h=200&fit=crop" alt="Children measuring objects" class="card-image">
+                </div>
+                <div class="goal-number">2</div>
+                <div class="goal-content">
+                    <h3 class="goal-title" data-en="Basic Measurements" data-zh="基本測量">Basic Measurements</h3>
+                    <p class="goal-description" data-en="Children learn to measure length, width, height using standard and non-standard units." data-zh="孩子們學習使用標準和非標準單位測量長度、寬度、高度。">Children learn to measure length, width, height using standard and non-standard units.</p>
+                    <div class="goal-example">
+                        <strong data-en="Example:" data-zh="例子：">Example:</strong> <span data-en="Using rulers, measuring tapes, and comparing sizes" data-zh="使用尺子、捲尺和比較大小">Using rulers, measuring tapes, and comparing sizes</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="goal-card">
+                <div class="goal-image">
+                    <img src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=300&h=200&fit=crop" alt="Children building structures" class="card-image">
+                </div>
+                <div class="goal-number">3</div>
+                <div class="goal-content">
+                    <h3 class="goal-title" data-en="Spatial Reasoning" data-zh="空間推理">Spatial Reasoning</h3>
+                    <p class="goal-description" data-en="Children develop understanding of spatial relationships, directions, and 3D construction." data-zh="孩子們發展對空間關係、方向和3D建構的理解。">Children develop understanding of spatial relationships, directions, and 3D construction.</p>
+                    <div class="goal-example">
+                        <strong data-en="Example:" data-zh="例子：">Example:</strong> <span data-en="Building with blocks, understanding above/below, left/right" data-zh="用積木建構、理解上下、左右">Building with blocks, understanding above/below, left/right</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="goal-card">
+                <div class="goal-image">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=200&fit=crop" alt="Children drawing shapes" class="card-image">
+                </div>
+                <div class="goal-number">4</div>
+                <div class="goal-content">
+                    <h3 class="goal-title" data-en="Shape Properties" data-zh="形狀屬性">Shape Properties</h3>
+                    <p class="goal-description" data-en="Children learn about sides, angles, vertices, and how shapes can be combined or transformed." data-zh="孩子們學習邊、角、頂點，以及形狀如何組合或變換。">Children learn about sides, angles, vertices, and how shapes can be combined or transformed.</p>
+                    <div class="goal-example">
+                        <strong data-en="Example:" data-zh="例子：">Example:</strong> <span data-en="Counting sides of polygons, identifying right angles" data-zh="計算多邊形的邊數、識別直角">Counting sides of polygons, identifying right angles</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="goal-card">
+                <div class="goal-image">
+                    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&h=200&fit=crop" alt="Children solving geometry problems" class="card-image">
+                </div>
+                <div class="goal-number">5</div>
+                <div class="goal-content">
+                    <h3 class="goal-title" data-en="Area and Perimeter" data-zh="面積和周長">Area and Perimeter</h3>
+                    <p class="goal-description" data-en="Children begin to understand concepts of area and perimeter through hands-on activities." data-zh="孩子們通過動手活動開始理解面積和周長的概念。">Children begin to understand concepts of area and perimeter through hands-on activities.</p>
+                    <div class="goal-example">
+                        <strong data-en="Example:" data-zh="例子：">Example:</strong> <span data-en="Counting squares to find area, measuring around shapes" data-zh="計算正方形來找面積、測量形狀周圍">Counting squares to find area, measuring around shapes</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="activities-section">
+            <h2 class="section-title" data-en="🎨 Fun & Interactive Activities" data-zh="🎨 有趣和互動活動">🎨 Fun & Interactive Activities</h2>
+            <div class="activities-grid">
+                <div class="activity-card">
+                    <div class="activity-image">
+                        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=250&h=150&fit=crop" alt="Shape building activities" class="activity-img">
+                    </div>
+                    <div class="activity-icon">🏗️</div>
+                    <div class="activity-content">
+                        <h3 class="activity-title" data-en="Shape Building" data-zh="形狀建構">Shape Building</h3>
+                        <p class="activity-description" data-en="Constructing 2D and 3D shapes using various materials and tools" data-zh="使用各種材料和工具建構2D和3D形狀">Constructing 2D and 3D shapes using various materials and tools</p>
+                    </div>
+                </div>
+                
+                <div class="activity-card">
+                    <div class="activity-image">
+                        <img src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=250&h=150&fit=crop" alt="Measurement activities" class="activity-img">
+                    </div>
+                    <div class="activity-icon">📏</div>
+                    <div class="activity-content">
+                        <h3 class="activity-title" data-en="Measurement Games" data-zh="測量遊戲">Measurement Games</h3>
+                        <p class="activity-description" data-en="Interactive measurement activities with rulers, scales, and comparison tools" data-zh="使用尺子、秤和比較工具的互動測量活動">Interactive measurement activities with rulers, scales, and comparison tools</p>
+                    </div>
+                </div>
+                
+                <div class="activity-card">
+                    <div class="activity-image">
+                        <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=250&h=150&fit=crop" alt="Spatial reasoning games" class="activity-img">
+                    </div>
+                    <div class="activity-icon">🧩</div>
+                    <div class="activity-content">
+                        <h3 class="activity-title" data-en="Spatial Puzzles" data-zh="空間謎題">Spatial Puzzles</h3>
+                        <p class="activity-description" data-en="Tangram puzzles, pattern blocks, and 3D construction challenges" data-zh="七巧板謎題、模式積木和3D建構挑戰">Tangram puzzles, pattern blocks, and 3D construction challenges</p>
+                    </div>
+                </div>
+                
+                <div class="activity-card">
+                    <div class="activity-image">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=250&h=150&fit=crop" alt="Real-world geometry" class="activity-img">
+                    </div>
+                    <div class="activity-icon">🌍</div>
+                    <div class="activity-content">
+                        <h3 class="activity-title" data-en="Real-World Geometry" data-zh="現實世界幾何">Real-World Geometry</h3>
+                        <p class="activity-description" data-en="Finding shapes in nature, architecture, and everyday objects" data-zh="在自然、建築和日常物品中尋找形狀">Finding shapes in nature, architecture, and everyday objects</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="timeline-section">
+            <h2 class="section-title" data-en="📅 Implementation Timeline" data-zh="📅 實施時間表">📅 Implementation Timeline</h2>
+            <div class="timeline-item">
+                <div class="timeline-week" data-en="Week 1-2" data-zh="第1-2週">Week 1-2</div>
+                <div class="timeline-content" data-en="Basic Shape Recognition: 2D shapes and their properties" data-zh="基本形狀識別：2D形狀及其屬性">Basic Shape Recognition: 2D shapes and their properties</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-week" data-en="Week 3-4" data-zh="第3-4週">Week 3-4</div>
+                <div class="timeline-content" data-en="3D Shapes and Spatial Reasoning: Building and construction activities" data-zh="3D形狀和空間推理：建構和建造活動">3D Shapes and Spatial Reasoning: Building and construction activities</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-week" data-en="Week 5-6" data-zh="第5-6週">Week 5-6</div>
+                <div class="timeline-content" data-en="Measurement Skills: Length, width, height using various tools" data-zh="測量技能：使用各種工具測量長度、寬度、高度">Measurement Skills: Length, width, height using various tools</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-week" data-en="Week 7-8" data-zh="第7-8週">Week 7-8</div>
+                <div class="timeline-content" data-en="Area and Perimeter: Introduction to geometric calculations" data-zh="面積和周長：幾何計算入門">Area and Perimeter: Introduction to geometric calculations</div>
+            </div>
+        </div>
+        
+        <div class="footer-theory">
+            <h3 class="theory-title" data-en="Based on Play-Based Learning Methodology" data-zh="基於以玩為基礎的學習方法論">Based on Play-Based Learning Methodology</h3>
+            <div class="theory-steps">
+                <div class="theory-step" data-en="Question" data-zh="發問">Question</div>
+                <div class="theory-arrow">→</div>
+                <div class="theory-step" data-en="Observe" data-zh="觀察">Observe</div>
+                <div class="theory-arrow">→</div>
+                <div class="theory-step" data-en="Hypothesize" data-zh="假設">Hypothesize</div>
+                <div class="theory-arrow">→</div>
+                <div class="theory-step" data-en="Act" data-zh="行動">Act</div>
+                <div class="theory-arrow">→</div>
+                <div class="theory-step" data-en="Evaluate" data-zh="評估">Evaluate</div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
