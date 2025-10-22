@@ -376,6 +376,43 @@ function initParallaxEffect() {
     });
 }
 
+// Game Button Interactions
+function initGameButtons() {
+    const gamePlayBtns = document.querySelectorAll('.game-play-btn');
+    const gameInfoBtns = document.querySelectorAll('.game-info-btn');
+    
+    gamePlayBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const gameCard = btn.closest('.game-card');
+            const gameTitle = gameCard.querySelector('h3').textContent;
+            showNotification(`Starting ${gameTitle}... Coming soon!`, 'info');
+        });
+    });
+    
+    gameInfoBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const gameCard = btn.closest('.game-card');
+            const gameTitle = gameCard.querySelector('h3').textContent;
+            showNotification(`Learn more about ${gameTitle} - Detailed information coming soon!`, 'info');
+        });
+    });
+}
+
+// Resource Link Analytics
+function initResourceLinks() {
+    const resourceLinks = document.querySelectorAll('.resource-link');
+    
+    resourceLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            const resourceName = link.querySelector('.resource-name').textContent;
+            console.log(`User clicked on resource: ${resourceName}`);
+            // You can add analytics tracking here
+        });
+    });
+}
+
 // Initialize all features when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     initScrollAnimations();
@@ -384,6 +421,8 @@ document.addEventListener('DOMContentLoaded', () => {
     initProjectCardEffects();
     initSkillItemEffects();
     initParallaxEffect();
+    initGameButtons();
+    initResourceLinks();
     
     // Add loading animation to page
     document.body.style.opacity = '0';
