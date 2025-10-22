@@ -427,6 +427,139 @@ function initNavigationScroll() {
     });
 }
 
+// Puzzle Game Initialization
+function initPuzzle() {
+    const puzzleContainer = document.getElementById('puzzle-container');
+    if (!puzzleContainer) return;
+
+    const shapes = ['circle', 'triangle', 'square', 'rectangle', 'diamond', 'hexagon'];
+    let draggedElement = null;
+    let draggedOffset = { x: 0, y: 0 };
+
+    // Add drag events to shapes
+    const puzzleShapes = puzzleContainer.querySelectorAll('.puzzle-shape');
+    puzzleShapes.forEach(shape => {
+        shape.addEventListener('mousedown', startDrag);
+        shape.addEventListener('touchstart', startDrag, { passive: false });
+    });
+
+    function startDrag(e) {
+        e.preventDefault();
+        draggedElement = e.target;
+        draggedElement.classList.add('dragging');
+        
+        const rect = draggedElement.getBoundingClientRect();
+        const containerRect = puzzleContainer.getBoundingClientRect();
+        
+        if (e.type === 'mousedown') {
+            draggedOffset.x = e.clientX - rect.left;
+            draggedOffset.y = e.clientY - rect.top;
+        } else {
+            draggedOffset.x = e.touches[0].clientX - rect.left;
+            draggedOffset.y = e.touches[0].clientY - rect.top;
+        }
+
+        document.addEventListener('mousemove', drag);
+        document.addEventListener('mouseup', endDrag);
+        document.addEventListener('touchmove', drag, { passive: false });
+        document.addEventListener('touchend', endDrag);
+    }
+
+    function drag(e) {
+        if (!draggedElement) return;
+        e.preventDefault();
+
+        const containerRect = puzzleContainer.getBoundingClientRect();
+        let clientX, clientY;
+
+        if (e.type === 'mousemove') {
+            clientX = e.clientX;
+            clientY = e.clientY;
+        } else {
+            clientX = e.touches[0].clientX;
+            clientY = e.touches[0].clientY;
+        }
+
+        const newX = clientX - containerRect.left - draggedOffset.x;
+        const newY = clientY - containerRect.top - draggedOffset.y;
+
+        // Constrain to container bounds
+        const maxX = puzzleContainer.offsetWidth - draggedElement.offsetWidth;
+        const maxY = puzzleContainer.offsetHeight - draggedElement.offsetHeight;
+
+        draggedElement.style.left = Math.max(0, Math.min(newX, maxX)) + 'px';
+        draggedElement.style.top = Math.max(0, Math.min(newY, maxY)) + 'px';
+
+        // Check for target matches
+        checkTargetMatch();
+    }
+
+    function endDrag() {
+        if (!draggedElement) return;
+
+        // Check for final match
+        const matched = checkTargetMatch();
+        if (!matched) {
+            // Snap back to original position if not matched
+            const shapeType = draggedElement.dataset.shape;
+            const originalPositions = {
+                circle: { top: '20px', left: '20px' },
+                triangle: { top: '20px', left: '80px' },
+                square: { top: '20px', left: '140px' },
+                rectangle: { top: '20px', left: '200px' },
+                diamond: { top: '20px', left: '280px' },
+                hexagon: { top: '20px', left: '330px' }
+            };
+            
+            const pos = originalPositions[shapeType];
+            draggedElement.style.top = pos.top;
+            draggedElement.style.left = pos.left;
+        }
+
+        draggedElement.classList.remove('dragging');
+        draggedElement = null;
+
+        document.removeEventListener('mousemove', drag);
+        document.removeEventListener('mouseup', endDrag);
+        document.removeEventListener('touchmove', drag);
+        document.removeEventListener('touchend', endDrag);
+    }
+
+    function checkTargetMatch() {
+        if (!draggedElement) return false;
+
+        const shapeType = draggedElement.dataset.shape;
+        const targets = puzzleContainer.querySelectorAll('.puzzle-target');
+        
+        for (let target of targets) {
+            const targetRect = target.getBoundingClientRect();
+            const shapeRect = draggedElement.getBoundingClientRect();
+            
+            // Check if shapes overlap
+            if (shapeRect.left < targetRect.right &&
+                shapeRect.right > targetRect.left &&
+                shapeRect.top < targetRect.bottom &&
+                shapeRect.bottom > targetRect.top) {
+                
+                // Check if it's the correct target (simplified matching)
+                const targetIndex = Array.from(targets).indexOf(target);
+                const shapeIndex = shapes.indexOf(shapeType);
+                
+                if (targetIndex === shapeIndex) {
+                    target.classList.add('matched');
+                    draggedElement.style.left = target.style.left;
+                    draggedElement.style.top = target.style.top;
+                    return true;
+                } else {
+                    target.classList.add('highlight');
+                    setTimeout(() => target.classList.remove('highlight'), 500);
+                }
+            }
+        }
+        return false;
+    }
+}
+
 // Initialize all features when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     initScrollAnimations();
@@ -438,6 +571,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initGameButtons();
     initResourceLinks();
     initNavigationScroll();
+    initPuzzle();
     
     // Add loading animation to page
     document.body.style.opacity = '0';

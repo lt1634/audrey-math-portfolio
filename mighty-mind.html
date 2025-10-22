@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mighty Mind Basic Puzzle - Audrey Math</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .game-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            min-height: 100vh;
+            background: var(--bg-primary);
+            padding-top: 6rem;
+        }
+        
+        .game-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 2rem 0;
+            background: var(--bg-secondary);
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .game-title {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .game-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+        
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: var(--gradient-secondary);
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-bottom: 2rem;
+            margin-top: 2rem;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .back-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .game-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .info-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            border-left: 4px solid var(--primary-color);
+        }
+        
+        .info-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .info-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .info-description {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        
+        .puzzle-game-container {
+            background: var(--bg-secondary);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+        
+        .game-instructions {
+            margin-bottom: 2rem;
+        }
+        
+        .instructions-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .instructions-text {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+        
+        .full-puzzle-container {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            background: var(--bg-primary);
+            border-radius: 15px;
+            overflow: hidden;
+            margin: 0 auto;
+            border: 3px solid var(--primary-color);
+        }
+        
+        .full-puzzle-shape {
+            transition: all 0.3s ease;
+            z-index: 10;
+            user-select: none;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            cursor: move;
+        }
+        
+        .full-puzzle-shape:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+        }
+        
+        .full-puzzle-shape.dragging {
+            z-index: 100;
+            transform: scale(1.2);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+        }
+        
+        .full-puzzle-target {
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.1);
+            border: 3px dashed #ccc;
+        }
+        
+        .full-puzzle-target.highlight {
+            background: rgba(76, 175, 80, 0.3);
+            border-color: #4caf50 !important;
+            animation: pulse 1s infinite;
+        }
+        
+        .full-puzzle-target.matched {
+            background: rgba(76, 175, 80, 0.5);
+            border-color: #4caf50 !important;
+        }
+        
+        .score-board {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-top: 2rem;
+            text-align: center;
+        }
+        
+        .score-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .score-display {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .reset-button {
+            background: var(--gradient-secondary);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .reset-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        @media (max-width: 768px) {
+            .game-container {
+                padding: 1rem;
+                padding-top: 5rem;
+            }
+            
+            .game-title {
+                font-size: 2.5rem;
+            }
+            
+            .game-info {
+                grid-template-columns: 1fr;
+            }
+            
+            .full-puzzle-container {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="audrey-math-logo.svg" alt="Audrey Math Logo" class="logo-img">
+            </div>
+            <div class="nav-controls">
+                <div class="language-toggle">
+                    <input type="checkbox" id="language-toggle" class="language-toggle-checkbox">
+                    <label for="language-toggle" class="language-toggle-label">
+                        <span class="en-icon">🇺🇸</span>
+                        <span class="zh-icon">🇹🇼</span>
+                    </label>
+                </div>
+                <div class="theme-toggle">
+                    <input type="checkbox" id="theme-toggle" class="theme-toggle-checkbox">
+                    <label for="theme-toggle" class="theme-toggle-label">
+                        <span class="sun-icon">☀️</span>
+                        <span class="moon-icon">🌙</span>
+                    </label>
+                </div>
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link" data-en="Home" data-zh="首頁">Home</a>
+                <a href="index.html#about" class="nav-link" data-en="About" data-zh="關於">About</a>
+                <a href="index.html#games" class="nav-link" data-en="Games" data-zh="遊戲">Games</a>
+                <a href="index.html#projects" class="nav-link" data-en="Courses" data-zh="課程">Courses</a>
+                <a href="index.html#contact" class="nav-link" data-en="Contact" data-zh="聯絡">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="game-container">
+        <a href="index.html" class="back-button">
+            <i class="fas fa-arrow-left"></i>
+            <span data-en="Back to Home" data-zh="返回首頁">Back to Home</span>
+        </a>
+        
+        <div class="game-header">
+            <h1 class="game-title" data-en="Mighty Mind Basic Puzzle" data-zh="Mighty Mind 基礎拼圖">Mighty Mind Basic Puzzle</h1>
+            <p class="game-subtitle" data-en="Interactive Geometric Shape Recognition for Ages 3-6" data-zh="3-6歲互動幾何形狀識別">Interactive Geometric Shape Recognition for Ages 3-6</p>
+        </div>
+        
+        <div class="game-info">
+            <div class="info-card">
+                <div class="info-icon">🧩</div>
+                <h3 class="info-title" data-en="32 Puzzle Pieces" data-zh="32片拼圖">32 Puzzle Pieces</h3>
+                <p class="info-description" data-en="Colorful geometric shapes for hands-on learning" data-zh="彩色幾何形狀，動手學習">Colorful geometric shapes for hands-on learning</p>
+            </div>
+            <div class="info-card">
+                <div class="info-icon">🎯</div>
+                <h3 class="info-title" data-en="Spatial Logic" data-zh="空間邏輯">Spatial Logic</h3>
+                <p class="info-description" data-en="Develop spatial reasoning and pattern recognition" data-zh="發展空間推理和模式識別">Develop spatial reasoning and pattern recognition</p>
+            </div>
+            <div class="info-card">
+                <div class="info-icon">🧠</div>
+                <h3 class="info-title" data-en="STEM Learning" data-zh="STEM 學習">STEM Learning</h3>
+                <p class="info-description" data-en="Science, Technology, Engineering, Mathematics" data-zh="科學、技術、工程、數學">Science, Technology, Engineering, Mathematics</p>
+            </div>
+            <div class="info-card">
+                <div class="info-icon">👶</div>
+                <h3 class="info-title" data-en="Ages 3-6" data-zh="3-6歲">Ages 3-6</h3>
+                <p class="info-description" data-en="Perfect for early childhood development" data-zh="適合早期兒童發展">Perfect for early childhood development</p>
+            </div>
+        </div>
+        
+        <div class="puzzle-game-container">
+            <div class="game-instructions">
+                <h2 class="instructions-title" data-en="How to Play" data-zh="遊戲玩法">How to Play</h2>
+                <p class="instructions-text" data-en="Drag the colorful shapes to match them with their corresponding targets below. This helps develop spatial reasoning and geometric recognition skills." data-zh="將彩色形狀拖拽到下方對應的目標位置。這有助於發展空間推理和幾何識別技能。">
+                    Drag the colorful shapes to match them with their corresponding targets below. This helps develop spatial reasoning and geometric recognition skills.
+                </p>
+            </div>
+            
+            <div id="full-puzzle-container" class="full-puzzle-container">
+                <!-- Shapes -->
+                <div class="full-puzzle-shape" data-shape="circle" style="background: #ff6b6b; border-radius: 50%; width: 60px; height: 60px; position: absolute; top: 30px; left: 30px;"></div>
+                <div class="full-puzzle-shape" data-shape="triangle" style="background: #4ecdc4; width: 0; height: 0; border-left: 30px solid transparent; border-right: 30px solid transparent; border-bottom: 52px solid #4ecdc4; position: absolute; top: 30px; left: 120px;"></div>
+                <div class="full-puzzle-shape" data-shape="square" style="background: #45b7d1; width: 60px; height: 60px; position: absolute; top: 30px; left: 210px;"></div>
+                <div class="full-puzzle-shape" data-shape="rectangle" style="background: #96ceb4; width: 90px; height: 45px; position: absolute; top: 30px; left: 300px;"></div>
+                <div class="full-puzzle-shape" data-shape="diamond" style="background: #feca57; width: 45px; height: 45px; transform: rotate(45deg); position: absolute; top: 30px; left: 420px;"></div>
+                <div class="full-puzzle-shape" data-shape="hexagon" style="background: #ff9ff3; width: 60px; height: 60px; clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%); position: absolute; top: 30px; left: 495px;"></div>
+                
+                <!-- Targets -->
+                <div class="full-puzzle-target" style="width: 60px; height: 60px; position: absolute; top: 150px; left: 30px; border-radius: 50%;"></div>
+                <div class="full-puzzle-target" style="width: 60px; height: 60px; position: absolute; top: 150px; left: 120px; clip-path: polygon(50% 0%, 0% 100%, 100% 100%);"></div>
+                <div class="full-puzzle-target" style="width: 60px; height: 60px; position: absolute; top: 150px; left: 210px;"></div>
+                <div class="full-puzzle-target" style="width: 90px; height: 45px; position: absolute; top: 150px; left: 300px;"></div>
+                <div class="full-puzzle-target" style="width: 45px; height: 45px; transform: rotate(45deg); position: absolute; top: 150px; left: 420px;"></div>
+                <div class="full-puzzle-target" style="width: 60px; height: 60px; clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%); position: absolute; top: 150px; left: 495px;"></div>
+            </div>
+            
+            <div class="score-board">
+                <h3 class="score-title" data-en="Score" data-zh="分數">Score</h3>
+                <div class="score-display" id="score-display">0 / 6</div>
+                <button class="reset-button" onclick="resetGame()" data-en="Reset Game" data-zh="重新開始">Reset Game</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+    <script>
+        // Enhanced puzzle game for full page
+        function initFullPuzzle() {
+            const puzzleContainer = document.getElementById('full-puzzle-container');
+            if (!puzzleContainer) return;
+
+            const shapes = ['circle', 'triangle', 'square', 'rectangle', 'diamond', 'hexagon'];
+            let draggedElement = null;
+            let draggedOffset = { x: 0, y: 0 };
+            let score = 0;
+
+            // Add drag events to shapes
+            const puzzleShapes = puzzleContainer.querySelectorAll('.full-puzzle-shape');
+            puzzleShapes.forEach(shape => {
+                shape.addEventListener('mousedown', startDrag);
+                shape.addEventListener('touchstart', startDrag, { passive: false });
+            });
+
+            function startDrag(e) {
+                e.preventDefault();
+                draggedElement = e.target;
+                draggedElement.classList.add('dragging');
+                
+                const rect = draggedElement.getBoundingClientRect();
+                const containerRect = puzzleContainer.getBoundingClientRect();
+                
+                if (e.type === 'mousedown') {
+                    draggedOffset.x = e.clientX - rect.left;
+                    draggedOffset.y = e.clientY - rect.top;
+                } else {
+                    draggedOffset.x = e.touches[0].clientX - rect.left;
+                    draggedOffset.y = e.touches[0].clientY - rect.top;
+                }
+
+                document.addEventListener('mousemove', drag);
+                document.addEventListener('mouseup', endDrag);
+                document.addEventListener('touchmove', drag, { passive: false });
+                document.addEventListener('touchend', endDrag);
+            }
+
+            function drag(e) {
+                if (!draggedElement) return;
+                e.preventDefault();
+
+                const containerRect = puzzleContainer.getBoundingClientRect();
+                let clientX, clientY;
+
+                if (e.type === 'mousemove') {
+                    clientX = e.clientX;
+                    clientY = e.clientY;
+                } else {
+                    clientX = e.touches[0].clientX;
+                    clientY = e.touches[0].clientY;
+                }
+
+                const newX = clientX - containerRect.left - draggedOffset.x;
+                const newY = clientY - containerRect.top - draggedOffset.y;
+
+                // Constrain to container bounds
+                const maxX = puzzleContainer.offsetWidth - draggedElement.offsetWidth;
+                const maxY = puzzleContainer.offsetHeight - draggedElement.offsetHeight;
+
+                draggedElement.style.left = Math.max(0, Math.min(newX, maxX)) + 'px';
+                draggedElement.style.top = Math.max(0, Math.min(newY, maxY)) + 'px';
+
+                // Check for target matches
+                checkTargetMatch();
+            }
+
+            function endDrag() {
+                if (!draggedElement) return;
+
+                // Check for final match
+                const matched = checkTargetMatch();
+                if (!matched) {
+                    // Snap back to original position if not matched
+                    const shapeType = draggedElement.dataset.shape;
+                    const originalPositions = {
+                        circle: { top: '30px', left: '30px' },
+                        triangle: { top: '30px', left: '120px' },
+                        square: { top: '30px', left: '210px' },
+                        rectangle: { top: '30px', left: '300px' },
+                        diamond: { top: '30px', left: '420px' },
+                        hexagon: { top: '30px', left: '495px' }
+                    };
+                    
+                    const pos = originalPositions[shapeType];
+                    draggedElement.style.top = pos.top;
+                    draggedElement.style.left = pos.left;
+                }
+
+                draggedElement.classList.remove('dragging');
+                draggedElement = null;
+
+                document.removeEventListener('mousemove', drag);
+                document.removeEventListener('mouseup', endDrag);
+                document.removeEventListener('touchmove', drag);
+                document.removeEventListener('touchend', endDrag);
+            }
+
+            function checkTargetMatch() {
+                if (!draggedElement) return false;
+
+                const shapeType = draggedElement.dataset.shape;
+                const targets = puzzleContainer.querySelectorAll('.full-puzzle-target');
+                
+                for (let target of targets) {
+                    const targetRect = target.getBoundingClientRect();
+                    const shapeRect = draggedElement.getBoundingClientRect();
+                    
+                    // Check if shapes overlap
+                    if (shapeRect.left < targetRect.right &&
+                        shapeRect.right > targetRect.left &&
+                        shapeRect.top < targetRect.bottom &&
+                        shapeRect.bottom > targetRect.top) {
+                        
+                        // Check if it's the correct target (simplified matching)
+                        const targetIndex = Array.from(targets).indexOf(target);
+                        const shapeIndex = shapes.indexOf(shapeType);
+                        
+                        if (targetIndex === shapeIndex) {
+                            target.classList.add('matched');
+                            draggedElement.style.left = target.style.left;
+                            draggedElement.style.top = target.style.top;
+                            score++;
+                            updateScore();
+                            return true;
+                        } else {
+                            target.classList.add('highlight');
+                            setTimeout(() => target.classList.remove('highlight'), 500);
+                        }
+                    }
+                }
+                return false;
+            }
+
+            function updateScore() {
+                document.getElementById('score-display').textContent = `${score} / 6`;
+                if (score === 6) {
+                    setTimeout(() => {
+                        alert('Congratulations! You completed the puzzle!');
+                    }, 500);
+                }
+            }
+
+            // Reset game function
+            window.resetGame = function() {
+                score = 0;
+                updateScore();
+                
+                // Reset all shapes to original positions
+                const originalPositions = {
+                    circle: { top: '30px', left: '30px' },
+                    triangle: { top: '30px', left: '120px' },
+                    square: { top: '30px', left: '210px' },
+                    rectangle: { top: '30px', left: '300px' },
+                    diamond: { top: '30px', left: '420px' },
+                    hexagon: { top: '30px', left: '495px' }
+                };
+                
+                puzzleShapes.forEach(shape => {
+                    const shapeType = shape.dataset.shape;
+                    const pos = originalPositions[shapeType];
+                    shape.style.top = pos.top;
+                    shape.style.left = pos.left;
+                });
+                
+                // Reset targets
+                const targets = puzzleContainer.querySelectorAll('.full-puzzle-target');
+                targets.forEach(target => {
+                    target.classList.remove('matched', 'highlight');
+                });
+            };
+        }
+
+        // Initialize when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            initFullPuzzle();
+        });
+    </script>
+</body>
+</html>
