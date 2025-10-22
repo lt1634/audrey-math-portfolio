@@ -503,12 +503,12 @@ function initPuzzle() {
             // Snap back to original position if not matched
             const shapeType = draggedElement.dataset.shape;
             const originalPositions = {
-                circle: { top: '20px', left: '20px' },
-                triangle: { top: '20px', left: '80px' },
-                square: { top: '20px', left: '140px' },
-                rectangle: { top: '20px', left: '200px' },
-                diamond: { top: '20px', left: '280px' },
-                hexagon: { top: '20px', left: '330px' }
+                circle: { top: '15px', left: '15px' },
+                triangle: { top: '15px', left: '60px' },
+                square: { top: '15px', left: '105px' },
+                rectangle: { top: '20px', left: '150px' },
+                diamond: { top: '20px', left: '210px' },
+                hexagon: { top: '15px', left: '245px' }
             };
             
             const pos = originalPositions[shapeType];
